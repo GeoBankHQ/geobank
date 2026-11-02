@@ -89,28 +89,45 @@
         linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0));
     }
     .play-btn{
-      position:absolute; inset:0; margin:auto;
-      width:110px; height:110px; border-radius:50%;
-      border:none; cursor:pointer;
-      display:grid; place-items:center;
-      background:linear-gradient(180deg, var(--red2), var(--red));
-      box-shadow:0 20px 40px rgba(223,30,53,.4), inset 0 1px 0 rgba(255,255,255,.35);
-      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:94px;
+      height:94px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.23);
+      padding:0;
+      cursor:pointer;
+      background:linear-gradient(145deg,#ff4b60 0%,#e81637 75%,#c70e29 100%);
+      box-shadow:0 0 0 10px rgba(235,28,54,.08), 0 18px 45px rgba(225,16,51,.36), inset 0 1px 0 rgba(255,255,255,.3);
+      transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease, filter .28s ease;
     }
-    .play-btn:hover{transform:scale(1.06);box-shadow:0 24px 50px rgba(223,30,53,.48), inset 0 1px 0 rgba(255,255,255,.45)}
-    .play-btn:active{transform:scale(.97)}
-    .play-btn svg{width:34px;height:34px;fill:#fff;transform:translateX(3px)}
-    .hint{margin:6px 0 0;font-size:15px;color:#5c5b63;text-align:center}
-    .hint strong{color:#1a1a1e}
+    .play-btn:hover{
+      transform:translate(-50%, -50%) scale(1.075);
+      box-shadow:0 0 0 14px rgba(235,28,54,.1), 0 23px 55px rgba(225,16,51,.46), inset 0 1px 0 rgba(255,255,255,.4);
+      filter:brightness(1.05);
+    }
+    .play-btn:active{transform:translate(-50%, -50%) scale(.96)}
+    .play-btn:focus-visible{outline:3px solid #fff;outline-offset:6px}
+    .play-btn svg{
+      width:32px;
+      height:32px;
+      display:block;
+      fill:#fff;
+      transform:none;
+    }
     @keyframes float{to{transform:translate(4%,-3%) scale(1.08)}}
     @keyframes bgShift{to{transform:translate3d(1.4%,-1%,0) scale(1.03)}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
     @media (max-width:560px){
       main{padding-top:34px;gap:14px}
-      .play-btn{width:92px;height:92px}
-      .play-btn svg{width:28px;height:28px}
+      .play-btn{width:76px;height:76px}
+      .play-btn svg{width:27px;height:27px}
       .video-card{border-radius:24px}
-      .hint{font-size:14px}
     }
   </style>
 </head>
@@ -130,11 +147,10 @@
 
     <div class="video-card" aria-label="ვიდეო ზონა">
       <button class="play-btn" id="playRickroll" aria-label="ვიდეოს გაშვება">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l10.8-6.86a1 1 0 0 0 0-1.72L9.5 4.28A1 1 0 0 0 8 5.14z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.3 5.8L19.4 12L8.3 18.2Z"/></svg>
       </button>
     </div>
 
-    <p class="hint">დააჭირე <strong>Play</strong> ღილაკს 👀</p>
   </main>
 
   <script>
