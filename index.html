@@ -3,56 +3,144 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#0b0b0c" />
   <meta name="description" content="GeoBank — გამოგონილი სასწავლო პროექტი." />
-  <title>GeoBank — Demo</title>
+  <title>GeoBank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root { color-scheme: light; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100svh; display:grid; place-items:center; overflow:hidden; color:#15171c; background:#fbfafb; }
-    .background {position:fixed; inset:-20%; pointer-events:none; overflow:hidden; background:linear-gradient(135deg,#fff 6%,#fff6f7 52%,#f1edef 100%);}
-    .glow {position:absolute; border-radius:50%; filter:blur(65px); opacity:.42; animation:float 8s ease-in-out infinite alternate;}
-    .glow.one {width:52vmax;height:52vmax;right:-12%;top:-22%;background:#ff6270;}
-    .glow.two {width:45vmax;height:45vmax;left:-13%;bottom:-27%;background:#a9a7ae;animation-delay:-3s;}
-    .grid {position:absolute;inset:0;background-image:radial-gradient(#d4cdd1 0.75px, transparent .75px);background-size:28px 28px;opacity:.27;mask-image:linear-gradient(90deg,transparent,#000 35%,#000 65%,transparent);}
-    main {position:relative; z-index:1; text-align:center; padding:36px 28px; width:min(100%,620px); animation:appear .85s cubic-bezier(.22,.85,.22,1) both;}
-    .mark {width:74px;height:74px;display:grid;place-items:center;margin:0 auto 24px;border:1px solid #ffffffcf;border-radius:23px;background:linear-gradient(145deg,#e63142,#ba122d);box-shadow:0 14px 35px #c3203840, inset 0 1px #ffffff73;}
-    .mark svg {width:39px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}
-    h1 {font-size:clamp(45px,8vw,69px);letter-spacing:-.07em;line-height:1.05;margin:0;font-weight:760;}
-    h1 span {color:#d91c36;}
-    .eyebrow {font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#8a6e76;margin:15px 0 37px;}
-    .divider {height:1px;max-width:255px;margin:0 auto 29px;background:linear-gradient(90deg,transparent,#bdacb2a9,transparent);}
-    .status {font-size:15px;line-height:1.55;color:#54515a;margin:0 auto 22px;}
-    .bar {width:min(225px,80vw);height:3px;border-radius:10px;background:#e5dfe2;overflow:hidden;margin:0 auto 18px;}
-    .progress {height:100%;background:linear-gradient(90deg,#ef4c61,#c91b32);width:0;animation:load 2.7s cubic-bezier(.17,.67,.34,1) forwards;}
-    .small {color:#8b848a;font-size:12px;line-height:1.5;}
-    .small a {color:#b32039;text-decoration:underline;text-underline-offset:3px;}
-    .footer {position:fixed;bottom:22px;left:12px;right:12px;text-align:center;font-size:11px;letter-spacing:.02em;color:#8e8388;z-index:1;}
-    @keyframes float {to {transform:translate(-6%,9%) scale(1.08)}}
-    @keyframes appear {from {opacity:0;transform:translateY(19px)}to{opacity:1;transform:none}}
-    @keyframes load {to{width:100%}}
-    @media(prefers-reduced-motion:reduce){.glow,.progress,main{animation:none}.progress{width:100%}}
+    :root{
+      color-scheme:light;
+      --ink:#09090d;
+      --red:#df1e35;
+      --red2:#ff445a;
+      --soft:#f8f2f4;
+      --card:#101012;
+      font-family:'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      overflow-x:hidden;
+      color:var(--ink);
+      background:#f8f4f5;
+    }
+    .background{
+      position:fixed; inset:-18%; pointer-events:none; overflow:hidden;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.92) 0 18%, rgba(255,255,255,0) 46%),
+        radial-gradient(circle at 83% 16%, rgba(255,73,103,0.28) 0 14%, rgba(255,73,103,0) 36%),
+        radial-gradient(circle at 22% 78%, rgba(20,20,26,0.11) 0 14%, rgba(20,20,26,0) 33%),
+        radial-gradient(circle at 86% 82%, rgba(233,38,66,0.18) 0 12%, rgba(233,38,66,0) 28%),
+        linear-gradient(135deg,#fffdfd 0%, #fff9fa 30%, #fdecef 58%, #f9f4f5 100%);
+      animation:bgShift 14s ease-in-out infinite alternate;
+    }
+    .mesh, .mesh2, .mesh3{
+      position:absolute;border-radius:50%;filter:blur(75px);opacity:.62;mix-blend-mode:multiply;
+      animation:float 14s ease-in-out infinite alternate;
+    }
+    .mesh{width:42vmax;height:42vmax;background:rgba(255,72,92,.18);top:-8%;right:-10%}
+    .mesh2{width:32vmax;height:32vmax;background:rgba(20,20,20,.12);left:-10%;bottom:-13%;animation-delay:-6s}
+    .mesh3{width:26vmax;height:26vmax;background:rgba(255,255,255,.85);left:30%;top:7%;filter:blur(52px);animation-delay:-2s}
+    .grid{position:absolute;inset:0;background-image:radial-gradient(rgba(50,50,60,.18) .8px, transparent .8px);background-size:26px 26px;opacity:.18}
+
+    main{
+      position:relative;z-index:2;
+      width:min(92vw, 880px);
+      padding:42px 20px 34px;
+      display:flex;flex-direction:column;align-items:center;gap:18px;
+      animation:fadeUp .8s cubic-bezier(.21,.84,.24,1) both;
+    }
+    .logo-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .logo-wrap img{
+      width:min(250px,52vw); height:auto; display:block;
+      filter:drop-shadow(0 10px 24px rgba(222,30,53,.14));
+    }
+    h1{
+      margin:0;
+      font-size:clamp(44px,7vw,76px);
+      line-height:1;
+      font-weight:700;
+      letter-spacing:-0.055em;
+      color:#0d0d10;
+    }
+    .video-card{
+      margin-top:8px;
+      width:min(92vw, 760px);
+      aspect-ratio:16/9;
+      border-radius:30px;
+      position:relative;
+      background:linear-gradient(180deg,#0f1014 0%, #020203 100%);
+      box-shadow:0 28px 70px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.06);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .video-card::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 70% 18%, rgba(228,34,56,.18), transparent 18%),
+        radial-gradient(circle at 28% 76%, rgba(255,255,255,.08), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0));
+    }
+    .play-btn{
+      position:absolute; inset:0; margin:auto;
+      width:110px; height:110px; border-radius:50%;
+      border:none; cursor:pointer;
+      display:grid; place-items:center;
+      background:linear-gradient(180deg, var(--red2), var(--red));
+      box-shadow:0 20px 40px rgba(223,30,53,.4), inset 0 1px 0 rgba(255,255,255,.35);
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .play-btn:hover{transform:scale(1.06);box-shadow:0 24px 50px rgba(223,30,53,.48), inset 0 1px 0 rgba(255,255,255,.45)}
+    .play-btn:active{transform:scale(.97)}
+    .play-btn svg{width:34px;height:34px;fill:#fff;transform:translateX(3px)}
+    .hint{margin:6px 0 0;font-size:15px;color:#5c5b63;text-align:center}
+    .hint strong{color:#1a1a1e}
+    @keyframes float{to{transform:translate(4%,-3%) scale(1.08)}}
+    @keyframes bgShift{to{transform:translate3d(1.4%,-1%,0) scale(1.03)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    @media (max-width:560px){
+      main{padding-top:34px;gap:14px}
+      .play-btn{width:92px;height:92px}
+      .play-btn svg{width:28px;height:28px}
+      .video-card{border-radius:24px}
+      .hint{font-size:14px}
+    }
   </style>
 </head>
 <body>
-  <div class="background" aria-hidden="true"><div class="glow one"></div><div class="glow two"></div><div class="grid"></div></div>
+  <div class="background" aria-hidden="true">
+    <div class="mesh"></div>
+    <div class="mesh2"></div>
+    <div class="mesh3"></div>
+    <div class="grid"></div>
+  </div>
+
   <main>
-    <div class="mark" aria-hidden="true">
-      <svg viewBox="0 0 48 48"><rect x="5" y="13" width="38" height="25" rx="5"/><path d="M5 21h38M12 29h8M29 29h7"/><path d="m31 8 5-3 5 3"/></svg>
+    <div class="logo-wrap">
+      <img src="assets/geobank-logo.png" alt="GeoBank logo" />
+      <h1>GeoBank</h1>
     </div>
-    <h1>Geo<span>Bank</span></h1>
-    <p class="eyebrow">DEMONSTRATION PROJECT</p>
-    <div class="divider"></div>
-    <p class="status">მიმდინარეობს ვებგვერდის ჩატვირთვა...</p>
-    <div class="bar" role="progressbar" aria-label="ჩატვირთვა"><div class="progress"></div></div>
-    <p class="small">თუ გვერდი ავტომატურად არ გაიხსნა, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">დააჭირეთ აქ</a>.</p>
+
+    <div class="video-card" aria-label="ვიდეო ზონა">
+      <button class="play-btn" id="playRickroll" aria-label="ვიდეოს გაშვება">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l10.8-6.86a1 1 0 0 0 0-1.72L9.5 4.28A1 1 0 0 0 8 5.14z"/></svg>
+      </button>
+    </div>
+
+    <p class="hint">დააჭირე <strong>Play</strong> ღილაკს 👀</p>
   </main>
-  <footer class="footer">GeoBank — გამოგონილი სასწავლო პროექტი. არ წარმოადგენს რეალურ ბანკს.</footer>
+
   <script>
-    // რამდენიმე წამის შემდეგ გადავდივართ სახალისო ვიდეოზე.
-    window.setTimeout(() => {
-      window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-    }, 2800);
+    document.getElementById('playRickroll').addEventListener('click', function(){
+      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    });
   </script>
 </body>
 </html>
