@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="GeoBank — გამოგონილი სასწავლო პროექტი." />
+  <title>GeoBank — Demo</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100svh; display:grid; place-items:center; overflow:hidden; color:#15171c; background:#fbfafb; }
+    .background {position:fixed; inset:-20%; pointer-events:none; overflow:hidden; background:linear-gradient(135deg,#fff 6%,#fff6f7 52%,#f1edef 100%);}
+    .glow {position:absolute; border-radius:50%; filter:blur(65px); opacity:.42; animation:float 8s ease-in-out infinite alternate;}
+    .glow.one {width:52vmax;height:52vmax;right:-12%;top:-22%;background:#ff6270;}
+    .glow.two {width:45vmax;height:45vmax;left:-13%;bottom:-27%;background:#a9a7ae;animation-delay:-3s;}
+    .grid {position:absolute;inset:0;background-image:radial-gradient(#d4cdd1 0.75px, transparent .75px);background-size:28px 28px;opacity:.27;mask-image:linear-gradient(90deg,transparent,#000 35%,#000 65%,transparent);}
+    main {position:relative; z-index:1; text-align:center; padding:36px 28px; width:min(100%,620px); animation:appear .85s cubic-bezier(.22,.85,.22,1) both;}
+    .mark {width:74px;height:74px;display:grid;place-items:center;margin:0 auto 24px;border:1px solid #ffffffcf;border-radius:23px;background:linear-gradient(145deg,#e63142,#ba122d);box-shadow:0 14px 35px #c3203840, inset 0 1px #ffffff73;}
+    .mark svg {width:39px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;}
+    h1 {font-size:clamp(45px,8vw,69px);letter-spacing:-.07em;line-height:1.05;margin:0;font-weight:760;}
+    h1 span {color:#d91c36;}
+    .eyebrow {font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#8a6e76;margin:15px 0 37px;}
+    .divider {height:1px;max-width:255px;margin:0 auto 29px;background:linear-gradient(90deg,transparent,#bdacb2a9,transparent);}
+    .status {font-size:15px;line-height:1.55;color:#54515a;margin:0 auto 22px;}
+    .bar {width:min(225px,80vw);height:3px;border-radius:10px;background:#e5dfe2;overflow:hidden;margin:0 auto 18px;}
+    .progress {height:100%;background:linear-gradient(90deg,#ef4c61,#c91b32);width:0;animation:load 2.7s cubic-bezier(.17,.67,.34,1) forwards;}
+    .small {color:#8b848a;font-size:12px;line-height:1.5;}
+    .small a {color:#b32039;text-decoration:underline;text-underline-offset:3px;}
+    .footer {position:fixed;bottom:22px;left:12px;right:12px;text-align:center;font-size:11px;letter-spacing:.02em;color:#8e8388;z-index:1;}
+    @keyframes float {to {transform:translate(-6%,9%) scale(1.08)}}
+    @keyframes appear {from {opacity:0;transform:translateY(19px)}to{opacity:1;transform:none}}
+    @keyframes load {to{width:100%}}
+    @media(prefers-reduced-motion:reduce){.glow,.progress,main{animation:none}.progress{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="background" aria-hidden="true"><div class="glow one"></div><div class="glow two"></div><div class="grid"></div></div>
+  <main>
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48"><rect x="5" y="13" width="38" height="25" rx="5"/><path d="M5 21h38M12 29h8M29 29h7"/><path d="m31 8 5-3 5 3"/></svg>
+    </div>
+    <h1>Geo<span>Bank</span></h1>
+    <p class="eyebrow">DEMONSTRATION PROJECT</p>
+    <div class="divider"></div>
+    <p class="status">მიმდინარეობს ვებგვერდის ჩატვირთვა...</p>
+    <div class="bar" role="progressbar" aria-label="ჩატვირთვა"><div class="progress"></div></div>
+    <p class="small">თუ გვერდი ავტომატურად არ გაიხსნა, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">დააჭირეთ აქ</a>.</p>
+  </main>
+  <footer class="footer">GeoBank — გამოგონილი სასწავლო პროექტი. არ წარმოადგენს რეალურ ბანკს.</footer>
+  <script>
+    // რამდენიმე წამის შემდეგ გადავდივართ სახალისო ვიდეოზე.
+    window.setTimeout(() => {
+      window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+    }, 2800);
+  </script>
+</body>
+</html>
